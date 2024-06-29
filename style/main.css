@@ -21,7 +21,7 @@ body {
   width: 100vw;
 }
 
-.container > div {
+.container>div {
   left: 0;
   position: absolute;
   right: 0;
@@ -90,7 +90,7 @@ body {
   display: inline-block;
 }
 
-.idea-6 span{
+.idea-6 span {
   font-size: 15rem;
 }
 

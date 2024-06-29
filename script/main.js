@@ -125,6 +125,8 @@ const animationTimeline = () => {
         color: "#fff",
     })
     .to(".idea-3", 0.7, ideaTextTransLeave, "+=2.5")
+    .from(".idea-3\\.5", 0.7, ideaTextTrans)
+    .to(".idea-3\\.5", 0.7, ideaTextTransLeave, "+=2.5")
     .from(".idea-4", 0.7, ideaTextTrans)
     .to(".idea-4", 0.7, ideaTextTransLeave, "+=2.5")
     .from(
@@ -270,3 +272,4 @@ const animationTimeline = () => {
         tl.restart();
     });
 }
+
