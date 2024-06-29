@@ -1,16 +1,14 @@
 // trigger to play music in the background with sweetalert
 window.addEventListener('load', () => {
     Swal.fire({
-        title: 'Do you want to play music in the background?',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes',
-        cancelButtonText: 'No',
+        title: 'Are you ready to the party?',
+        icon: 'success',
+        showCancelButton: false,
+        confirmButtonColor: '#30D678',
+        confirmButtonText: 'Im Ready',
     }).then((result) => {
         if (result.isConfirmed) {
-            document.querySelector('.song').play();
+            document.querySelector('#song').play();
             animationTimeline();
         } else {
             animationTimeline();
@@ -18,16 +16,11 @@ window.addEventListener('load', () => {
     });
 });
 
-
 // animation timeline
 const animationTimeline = () => {
     // split chars that needs to be animated individually
-    const textBoxChars = document.getElementsByClassName("hbd-chatbox")[0];
-    const hbd = document.getElementsByClassName("wish-hbd")[0];
+    const hbd = document.getElementById("wish-hbd");
 
-    textBoxChars.innerHTML = `<span>${textBoxChars.innerHTML
-        .split("")
-        .join("</span><span>")}</span>`;
 
     hbd.innerHTML = `<span>${hbd.innerHTML
         .split("")
@@ -50,87 +43,81 @@ const animationTimeline = () => {
     // timeline
     const tl = new TimelineMax();
 
-    tl.to(".container", 0.6, {
+    tl.to("#container", 0.6, {
         visibility: "visible"
     })
-    .from(".one", 0.7, {
+    .from("#one", 0.7, {
         opacity: 0,
         y: 10
     })
-    .from(".two", 0.4, {
+    .from("#two", 0.4, {
         opacity: 0,
         y: 10
     })
-    .to(".one",
+    .to("#one",
         0.7,
         {
             opacity: 0,
             y: 10
         },
     "+=3.5")
-    .to(".two",
+    .to("#two",
         0.7,
         {
             opacity: 0,
             y: 10
         },
     "-=1")
-    .from(".three", 0.7, {
+    .from("#three", 0.7, {
         opacity: 0,
         y: 10
     })
-    .to(".three",
+    .to("#three",
         0.7,
         {
             opacity: 0,
             y: 10
         },
     "+=3")
-    .from(".four", 0.7, {
+    .from("#four", 0.7, {
+        scale: 0.2,
+        opacity: 0
+    })
+    .add(startTypeWriter, "+=0.7") // Memanggil fungsi typeWriter setelah animasi #four
+    .from("#fake-btn", 0.3, {
         scale: 0.2,
         opacity: 0,
     })
-    .from(".fake-btn", 0.3, {
-        scale: 0.2,
-        opacity: 0,
-    })
-    .staggerTo(
-        ".hbd-chatbox span",
-        1.5, {
-            visibility: "visible",
-        },
-        0.05
-    )
-    .to(".fake-btn", 0.1, {
+    .to("#fake-btn", 0.1, {
         backgroundColor: "rgb(127, 206, 248)",
     },
-    "+=4")
+    "+=10")
     .to(
-        ".four",
+        "#four",
         0.5, {
             scale: 0.2,
             opacity: 0,
             y: -150
         },
-    "+=1")
-    .from(".idea-1", 0.7, ideaTextTrans)
-    .to(".idea-1", 0.7, ideaTextTransLeave, "+=2.5")
-    .from(".idea-2", 0.7, ideaTextTrans)
-    .to(".idea-2", 0.7, ideaTextTransLeave, "+=2.5")
-    .from(".idea-3", 0.7, ideaTextTrans)
-    .to(".idea-3 strong", 0.5, {
+    "+=15")
+    .from("#idea-1", 0.7, ideaTextTrans)
+    .to("#idea-1", 0.7, ideaTextTransLeave, "+=2.5")
+    .from("#idea-2", 0.7, ideaTextTrans)
+    .to("#idea-2", 0.7, ideaTextTransLeave, "+=2.5")
+    .from("#idea-3", 0.7, ideaTextTrans)
+    .to("#idea-3 strong", 0.5, {
         scale: 1.2,
         x: 10,
         backgroundColor: "rgb(21, 161, 237)",
         color: "#fff",
     })
-    .to(".idea-3", 0.7, ideaTextTransLeave, "+=2.5")
-    .from(".idea-3\\.5", 0.7, ideaTextTrans)
-    .to(".idea-3\\.5", 0.7, ideaTextTransLeave, "+=2.5")
-    .from(".idea-4", 0.7, ideaTextTrans)
-    .to(".idea-4", 0.7, ideaTextTransLeave, "+=2.5")
+    .to("#idea-3", 0.7, ideaTextTransLeave, "+=2.5")
+    .from("#idea-3\\.5", 0.7, ideaTextTrans)
+    .to("#idea-3\\.5", 0.7, ideaTextTransLeave, "+=2.5")
+    .from("#idea-4", 0.7, ideaTextTrans)
+    .to("#idea-4", 0.7, ideaTextTransLeave, "+=2.5")
     .from(
-        ".idea-5",
+        "#idea-5",
         0.7, {
             rotationX: 15,
             rotationZ: -10,
@@ -142,7 +129,7 @@ const animationTimeline = () => {
         "+=1.5"
     )
     .to(
-        ".idea-5 span",
+        "#idea-5 span",
         0.7, {
             rotation: 90,
             x: 8,
@@ -150,7 +137,7 @@ const animationTimeline = () => {
         "+=1.4"
     )
     .to(
-        ".idea-5",
+        "#idea-5",
         0.7, {
             scale: 0.2,
             opacity: 0,
@@ -158,7 +145,7 @@ const animationTimeline = () => {
         "+=2"
     )
     .staggerFrom(
-        ".idea-6 span",
+        "#idea-6 span",
         0.8, {
             scale: 3,
             opacity: 0,
@@ -168,7 +155,7 @@ const animationTimeline = () => {
         0.2
     )
     .staggerTo(
-        ".idea-6 span",
+        "#idea-6 span",
         0.8, {
             scale: 3,
             opacity: 0,
@@ -179,7 +166,7 @@ const animationTimeline = () => {
         "+=1.5"
     )
     .staggerFromTo(
-        ".baloons img",
+        "#baloons img",
         2.5, {
             opacity: 0.9,
             y: 1400,
@@ -190,7 +177,7 @@ const animationTimeline = () => {
         0.2
     )
     .from(
-        ".profile-picture",
+        "#profile-picture",
         0.5, {
             scale: 3.5,
             opacity: 0,
@@ -200,18 +187,17 @@ const animationTimeline = () => {
         },
         "-=2"
     )
-    .from(".hat", 0.5, {
+    .from("#hat", 0.5, {
         x: -100,
         y: 350,
         rotation: -180,
         opacity: 0,
     })
     .staggerFrom(
-        ".wish-hbd span",
+        "#wish-hbd span",
         0.7, {
             opacity: 0,
             y: -50,
-            // scale: 0.3,
             rotation: 150,
             skewX: "30deg",
             ease: Elastic.easeOut.config(1, 0.5),
@@ -219,7 +205,7 @@ const animationTimeline = () => {
         0.1
     )
     .staggerFromTo(
-        ".wish-hbd span",
+        "#wish-hbd span",
         0.7, {
             scale: 1.4,
             rotationY: 150,
@@ -233,7 +219,7 @@ const animationTimeline = () => {
         "party"
     )
     .from(
-        ".wish h5",
+        "#wish h5",
         0.5, {
             opacity: 0,
             y: 10,
@@ -242,7 +228,7 @@ const animationTimeline = () => {
         "party"
     )
     .staggerTo(
-        ".eight svg",
+        "#eight svg",
         1.5, {
             visibility: "visible",
             opacity: 0,
@@ -252,24 +238,58 @@ const animationTimeline = () => {
         },
         0.3
     )
-    .to(".six", 0.5, {
+    .to("#six", 0.5, {
         opacity: 0,
         y: 30,
         zIndex: "-1",
     })
-    .staggerFrom(".nine p", 1, ideaTextTrans, 1.2)
+    .staggerFrom("#nine p", 1, ideaTextTrans, 1.2)
     .to(
-        ".last-smile",
+        "#last-smile",
         0.5, {
             rotation: 90,
         },
         "+=1"
     );
 
+    // Fungsi untuk memulai animasi mengetik
+    function startTypeWriter() {
+        var i = 0;
+        var txt = 'Happy Birthday to you my love, my beauty, my soul, my everything!!. Now you are 18 years old. You made it through everything darling, you are great. Keep up the spirit dear, you still have a long way to go and I will always be by your side. I love you very much, I hope you have a nice day and I hope this is the best memory from me to you.';
+        var speed = 25;
+        var chatbox = document.getElementById("hbd-chatbox");
+        console.log("startTypeWriter is called");
+        console.log("Visibility: " + window.getComputedStyle(chatbox).visibility);
+
+        if (chatbox && window.getComputedStyle(chatbox).visibility !== 'hidden') {
+            function typeWriter() {
+                console.log("typeWriter is called");
+                if (i < txt.length) {
+                    chatbox.innerHTML += txt.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, speed);
+                } else {
+                    console.log("TypeWriter completed");
+                }
+            }
+            typeWriter();
+        } else {
+            console.log("Chatbox not ready, retrying...");
+            setTimeout(startTypeWriter, 100);
+        }
+    }
+
     // Restart Animation on click
     const replyBtn = document.getElementById("replay");
     replyBtn.addEventListener("click", () => {
-        tl.restart();
+        window.location.reload();
     });
+
+ 
 }
+
+
+
+
+
 
