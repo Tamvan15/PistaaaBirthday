@@ -1,6 +1,4 @@
-html {
-  box-sizing: border-box;
-}
+html {}
 
 body {
   font-family: 'Poppins', sans-serif;
@@ -174,7 +172,7 @@ body {
 }
 
 #eight svg:nth-child(4) {
-  fill: #347a9d;
+  fill: #ea73cc;
   left: 57vw;
   top: 43vh;
 }
